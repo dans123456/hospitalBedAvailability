@@ -1,0 +1,1215 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styles */
+.header {
+    margin-bottom: 40px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-bottom: 10px;
+}
+
+.header-content {
+    flex-grow: 1;
+    text-align: center;
+    min-width: 200px;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-weight: 300;
+    margin-bottom: 0;
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-content {
+        text-align: center;
+    }
+
+    .header-actions {
+        margin-top: 15px;
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+/* Main Content Layout - Specific for Dashboard */
+.dashboard-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.top-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Single column on mobile */
+    gap: 2rem;
+    align-items: start;
+}
+
+/* Two columns for larger screens */
+@media (min-width: 992px) {
+    .top-row {
+        grid-template-columns: 1fr 2fr;
+    }
+}
+
+
+/* Card Styles */
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card h2 {
+    color: #2d3748;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Form Styles */
+.hospital-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form-control.error {
+    border-color: #e53e3e;
+    background-color: #fff5f5;
+}
+
+.error-message {
+    color: #e53e3e;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 480px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #4a5568;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select {
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background: #f7fafc;
+    font-family: 'Inter', sans-serif;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    background: white;
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Section Header */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.stats {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    /* Vertically align stat items */
+    justify-content: center;
+    /* Center stats on smaller screens */
+}
+
+.stat-item {
+    background: #f7fafc;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    text-align: center;
+    min-width: 120px;
+    flex-grow: 1;
+    /* Allow items to grow */
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #718096;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2d3748;
+}
+
+/* Controls Container for Search, Sort, Filters */
+.controls-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+    .controls-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/* Search Bar Styling */
+.search-bar-group {
+    position: relative;
+    flex-grow: 1;
+    min-width: 250px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 16px 12px 40px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background: #f7fafc;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    background: white;
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #a0aec0;
+    font-size: 1rem;
+}
+
+/* Sort Select Styling */
+.sort-options-group {
+    position: relative;
+    min-width: 180px;
+}
+
+.sort-select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #f7fafc url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23a0aec0" width="18px" height="18px"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 12px center;
+    background-size: 18px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    color: #4a5568;
+}
+
+.sort-select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    background-color: white;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Hospitals List */
+.hospitals-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.hospital-item {
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Add slight animation delay for list items for a staggered effect */
+.hospitals-list .hospital-item:nth-child(1) {
+    animation-delay: 0.0s;
+}
+
+.hospitals-list .hospital-item:nth-child(2) {
+    animation-delay: 0.05s;
+}
+
+.hospitals-list .hospital-item:nth-child(3) {
+    animation-delay: 0.1s;
+}
+
+.hospitals-list .hospital-item:nth-child(4) {
+    animation-delay: 0.15s;
+}
+
+.hospitals-list .hospital-item:nth-child(5) {
+    animation-delay: 0.2s;
+}
+
+/* ... you can add more if needed, or use a JS-based stagger */
+
+
+.hospital-item:hover {
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: #cbd5e0;
+}
+
+.hospital-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.hospital-info {
+    /* New class for the left-side info */
+    flex-grow: 1;
+}
+
+.hospital-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 5px;
+    /* Spacing below name */
+}
+
+.hospital-location-link {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+    font-size: 0.9rem;
+    /* Smaller for location */
+}
+
+.hospital-location-link:hover {
+    color: #5a67d8;
+    text-decoration: underline;
+}
+
+.bed-availability {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.bed-type {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    text-align: center;
+}
+
+.bed-type.icu {
+    border-left: 4px solid #e53e3e;
+}
+
+.bed-type.regular {
+    border-left: 44px solid #38a169;
+}
+
+.bed-label {
+    font-size: 0.8rem;
+    color: #718096;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.bed-count {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2d3748;
+}
+
+.icu .bed-count {
+    color: #e53e3e;
+}
+
+.regular .bed-count {
+    color: #38a169;
+}
+
+.hospital-contact {
+    color: #718096;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.hospital-contact .call-link {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.hospital-contact .call-link:hover {
+    color: #5a67d8;
+    text-decoration: underline;
+}
+
+
+.timestamp {
+    color: #a0aec0;
+    font-size: 0.8rem;
+    margin-top: 10px;
+}
+
+/* Hospital Actions (Edit/Delete Buttons) */
+.hospital-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    /* Vertically align buttons */
+}
+
+.btn-edit,
+.btn-delete {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    /* For potential anchor tags */
+}
+
+.btn-edit {
+    background: #a0aec0;
+    /* A neutral gray */
+    color: white;
+    border: 1px solid #a0aec0;
+}
+
+.btn-edit:hover {
+    background: #718096;
+    border-color: #718096;
+    transform: translateY(-1px);
+}
+
+.btn-delete {
+    background: #e53e3e;
+    color: white;
+    border: 1px solid #e53e3e;
+}
+
+.btn-delete:hover {
+    background: #c53030;
+    border-color: #c53030;
+    transform: translateY(-1px);
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #a0aec0;
+}
+
+.empty-state i {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.empty-state h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #718096;
+}
+
+.empty-state p {
+    font-size: 1rem;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    /* Hidden by default, controlled by JS */
+    position: fixed;
+    z-index: 1000;
+    /* High z-index to appear above everything */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent overlay */
+    backdrop-filter: blur(5px);
+    /* Blurred background */
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    /* Enable scrolling for modal content if it overflows */
+    padding: 20px;
+    /* Padding for small screens */
+}
+
+/* Ensure modal is focusable for accessibility */
+.modal[aria-hidden="false"] {
+    display: flex;
+    /* Show the modal */
+    outline: none;
+    /* Remove default outline */
+}
+
+/* Disable body scroll when modal is open */
+body.modal-open {
+    overflow: hidden;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 0;
+    /* Remove default padding as header/body/footer have their own */
+    border-radius: 16px;
+    width: 90%;
+    max-width: 500px;
+    /* Default max-width for smaller modals */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    animation: modalSlideIn 0.3s ease;
+    display: flex;
+    /* Flex container for header, body, footer */
+    flex-direction: column;
+}
+
+#publicAvailabilityModal .modal-content {
+    max-width: 800px;
+    /* Wider for hospital list and map */
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    padding: 25px 30px 0;
+    /* Padding for header (top, sides, no bottom) */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    color: #2d3748;
+    font-size: 1.3rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Specific colors for modal icons */
+.modal-header h3 i.fa-info-circle {
+    color: #667eea;
+}
+
+.modal-header h3 i.fa-check-circle {
+    color: #38a169;
+}
+
+.modal-header h3 i.fa-times-circle,
+.modal-header h3 i.fa-exclamation-triangle {
+    color: #e53e3e;
+}
+
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #a0aec0;
+    padding: 5px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+    background-color: #f7fafc;
+    color: #4a5568;
+}
+
+.modal-body {
+    padding: 20px 30px;
+    color: #4a5568;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 60vh;
+    /* Limit modal body height for scrolling if content is long */
+    overflow-y: auto;
+    /* Enable scrolling */
+    flex-grow: 1;
+    /* Allow body to grow and take available space */
+}
+
+.modal-body.text-center {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.modal-body input[type="password"] {
+    width: 100%;
+    max-width: 300px;
+    padding: 12px 16px;
+    border: 2px solid #cbd5e0;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #2d3748;
+    transition: all 0.3s ease;
+    background: #fdfdfe;
+    text-align: center;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    margin: 0 auto;
+    /* Center the password input */
+}
+
+.modal-body input[type="password"]:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+    background: white;
+}
+
+.modal-body input[type="password"]::placeholder {
+    color: #a0aec0;
+    opacity: 0.8;
+}
+
+.modal-footer {
+    padding: 0 30px 25px;
+    /* Padding for footer (bottom, sides, no top) */
+    display: flex;
+    justify-content: flex-end;
+    margin-top: auto;
+    /* Push footer to the bottom of the modal-content */
+}
+
+.modal-footer.center-btn {
+    justify-content: center;
+}
+
+
+.btn-primary {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #5a67d8;
+}
+
+.btn-secondary {
+    background: #e2e8f0;
+    color: #4a5568;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.btn-secondary:hover {
+    background: #cbd5e0;
+    color: #2d3748;
+}
+
+.btn-danger {
+    background: #e53e3e;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-danger:hover {
+    background: #c53030;
+}
+
+/* Landing Page Styles */
+.hero-section {
+    text-align: center;
+    color: white;
+    padding: 80px 20px;
+    border-radius: 16px;
+    margin-bottom: 40px;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    line-height: 1.8;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+.hero-section .btn-cta {
+    background-color: white;
+    color: #667eea;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.hero-section .btn-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    color: #764ba2;
+}
+
+.info-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.info-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.info-card i {
+    font-size: 2.5rem;
+    color: #667eea;
+    margin-bottom: 15px;
+}
+
+.info-card h3 {
+    font-size: 1.4rem;
+    color: #2d3748;
+    margin-bottom: 10px;
+}
+
+.info-card p {
+    font-size: 0.95rem;
+    color: #4a5568;
+    line-height: 1.7;
+}
+
+.admin-login-card {
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+.admin-login-card h2 {
+    font-size: 1.8rem;
+    color: #2d3748;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.admin-login-card .btn-primary {
+    margin-top: 20px;
+}
+
+.footer {
+    text-align: center;
+    color: white;
+    padding: 20px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-top: auto;
+}
+
+/* LEAFLET MAP STYLES */
+#map,
+#publicMap {
+    height: 400px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    z-index: 1;
+    /* Ensure map is above other elements if needed */
+}
+
+.leaflet-popup-content {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.leaflet-popup-content b {
+    color: #2d3748;
+}
+
+/* Validation Styles */
+.form-control.error {
+    border-color: #e53e3e !important;
+    /* !important to override other borders */
+    background-color: #fff5f5;
+}
+
+.error-message {
+    color: #e53e3e;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
+/* Pagination Styles */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 15px 0;
+    border-top: 1px solid #e2e8f0;
+}
+
+.page-btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+}
+
+.page-info {
+    font-size: 0.9rem;
+    color: #4a5568;
+}
+
+.page-btn[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Accessibility Overrides */
+:root {
+    --accessible-blue: #2563eb;
+    /* Stronger blue for contrast */
+    --accessible-red: #dc2626;
+    /* Stronger red for contrast */
+    --accessible-text: #1f2937;
+    /* Darker text for contrast */
+}
+
+/* Ensure contrast for text */
+body {
+    color: var(--accessible-text);
+}
+
+/* Buttons */
+.btn-primary {
+    background: var(--accessible-blue);
+    color: white;
+}
+
+/* Error states */
+.error-message {
+    color: var(--accessible-red);
+}
+
+/* Focus states */
+/* Ensure all interactive elements have a clear focus indicator for keyboard navigation */
+*:focus-visible {
+    outline: 3px solid var(--accessible-blue);
+    outline-offset: 2px;
+    border-radius: 4px;
+    /* Match element rounded corners if possible */
+}
+
+/* Screen reader only utility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Chart container styles */
+.chart-container {
+    position: relative;
+    height: 300px;
+    /* Default height */
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Add to styles.css */
+.emergency-alert {
+    /* General class for emergency alerts if needed elsewhere */
+    animation: pulse 2s infinite;
+    border-left: 4px solid #e53e3e;
+}
+
+/* Verification Badge */
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    /* Space below badges */
+}
+
+.verified-badge {
+    display: inline-flex;
+    align-items: center;
+    background: #38a169;
+    /* Green */
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    /* margin-left: 10px; */
+    /* Removed as part of .badges gap */
+    vertical-align: middle;
+}
+
+.verified-badge i {
+    margin-right: 3px;
+}
+
+/* Emergency Badge */
+.emergency-badge {
+    display: inline-flex;
+    align-items: center;
+    background: #e53e3e;
+    /* Red */
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    /* margin-left: 10px; */
+    /* Removed as part of .badges gap */
+    animation: pulse-red 1.5s infinite;
+    /* Specific pulse for urgency */
+}
+
+/* Additional style for when no beds are available (more subtle than critical) */
+.emergency-badge.no-beds {
+    background: #718096;
+    /* Greyish for 'no beds' */
+    animation: none;
+    /* No pulse for static 'no beds' */
+}
+
+/* Corrected and singular @keyframes pulse definition for red urgency */
+@keyframes pulse-red {
+    0% {
+        box-shadow: 0 0 0 0 rgba(229, 62, 62, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(229, 62, 62, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(229, 62, 62, 0);
+    }
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .stats {
+        justify-content: center;
+    }
+
+    .hospital-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hospital-actions {
+        width: 100%;
+        /* Make action buttons take full width */
+        justify-content: flex-end;
+        /* Align actions to the right or center */
+        margin-top: 10px;
+        /* Space between info and actions */
+    }
+
+    .bed-availability {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        margin: 10% auto;
+        width: 95%;
+    }
+
+    /* Landing Page Specific Responsive */
+    .hero-section h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-section p {
+        font-size: 1rem;
+    }
+
+    .hero-section .btn-cta {
+        font-size: 1rem;
+        padding: 12px 25px;
+    }
+
+    .info-section {
+        grid-template-columns: 1fr;
+    }
+
+    #map,
+    #publicMap {
+        height: 300px;
+    }
+
+    .chart-container {
+        height: 250px;
+        /* Smaller height for charts on mobile */
+    }
+}

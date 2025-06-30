@@ -1,0 +1,15 @@
+# Node.js
+node_modules/
+.env
+npm-debug.log
+*.log
+
+# macOS
+.DS_Store
+
+# Other OS
+Thumbs.db
+
+# Database backups
+*.sql
+*.sqlite

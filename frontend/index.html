@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Bed Availability Ghana</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-hospital"></i> Hospital Bed Availability</h1>
+            <p>Real-time bed availability across all hospitals in Ghana</p>
+        </header>
+
+        <main class="main-content">
+            <section class="hero-section">
+                <h1>Bridging Healthcare Needs in Ghana</h1>
+                <p>Empowering hospitals and citizens with real-time insights into bed availability across Ghana's
+                    healthcare facilities. Find the nearest available bed for ICU or General Ward care.</p>
+                <button id="openPublicAvailabilityModalBtn" class="btn-cta">
+                    <i class="fas fa-search"></i> View Current Availability
+                </button>
+            </section>
+
+            <section class="info-section">
+                <div class="info-card">
+                    <i class="fas fa-clipboard-check"></i>
+                    <h3>Real-time Updates</h3>
+                    <p>Get the most current information on bed statuses from participating hospitals.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-users"></i>
+                    <h3>For All Users</h3>
+                    <p>Designed for public access to view availability and administrative access for hospitals to
+                        update.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Nationwide Coverage</h3>
+                    <p>Aiming to connect hospitals across all regions of Ghana for better healthcare coordination.</p>
+                </div>
+            </section>
+
+            <section class="admin-login-card">
+                <h2><i class="fas fa-user-shield"></i> Hospital Admin Login</h2>
+                <p>Authorized personnel can log in here to update their hospital's bed availability.</p>
+                <button id="openLoginModalBtn" class="btn-primary">
+                    <i class="fas fa-sign-in-alt"></i> Login as Admin
+                </button>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Hospital Bed Availability Ghana. All rights reserved.</p>
+        </footer>
+
+        <!-- Admin Login Modal -->
+        <div id="adminLoginModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="adminLoginModalTitle"
+            aria-hidden="true">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="adminLoginModalTitle"><i class="fas fa-user-shield"></i> Admin Login</h3>
+                    <button class="close-btn" onclick="window.closeAdminModal()"
+                        aria-label="Close admin login modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <input type="password" id="adminPassInput" placeholder="Enter Admin Password" autofocus>
+                </div>
+                <div class="modal-footer">
+                    <button onclick="window.verifyAdminLogin()" class="btn-primary">Login</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Public Availability Modal -->
+        <div id="publicAvailabilityModal" class="modal" role="dialog" aria-modal="true"
+            aria-labelledby="publicAvailabilityModalTitle" aria-hidden="true">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="publicAvailabilityModalTitle"><i class="fas fa-bed"></i> Current Bed Availability</h3>
+                    <button class="close-btn" onclick="window.closePublicAvailabilityModal()"
+                        aria-label="Close public availability modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="publicMap" style="height: 300px; width: 100%; margin-bottom: 20px;"></div>
+                    <div id="publicHospitalsList" class="hospitals-list">
+                    </div>
+                </div>
+                <div class="modal-footer center-btn">
+                    <button class="btn-primary" onclick="window.closePublicAvailabilityModal()">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Generic Notification Modal (used by utils.js and script.js) -->
+        <div id="notificationModal" class="modal" role="dialog" aria-modal="true"
+            aria-labelledby="notificationModalTitle" aria-hidden="true">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="notificationModalTitle"><i class="fas fa-info-circle"></i> Notification</h3>
+                    <button class="close-btn" onclick="window.closeNotificationModal()"
+                        aria-label="Close notification modal">&times;</button>
+                </div>
+                <div class="modal-body text-center">
+                    <p id="notificationModalMessage"></p>
+                </div>
+                <div class="modal-footer center-btn">
+                    <button class="btn-primary" onclick="window.closeNotificationModal()">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="utils.js"></script>
+    <script src="script.js"></script> <!-- script.js must be loaded AFTER utils.js -->
+    <!-- Inline script previously here is now integrated into script.js for better organization -->
+</body>
+
+</html>
