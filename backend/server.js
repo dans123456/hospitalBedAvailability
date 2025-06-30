@@ -8,11 +8,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // --- Database Configuration for MySQL ---
+// --- Database Configuration for MySQL ---
 const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'siaw8985', // IMPORTANT: In production, use environment variables for this!
-    database: 'hospital_beds_db',
+    host: process.env.DB_HOST || 'localhost',        // Get from env, fallback to localhost
+    user: process.env.DB_USER || 'root',             // Get from env, fallback to root
+    password: process.env.DB_PASSWORD || 'siaw8985', // Get from env, fallback for local
+    database: process.env.DB_NAME || 'hospital_beds_db', // Get from env, fallback for local
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
