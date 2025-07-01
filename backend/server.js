@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 8080;
 // For local development, they will fall back to 'localhost', 'root', etc.
 const pool = mysql.createPool({
     host: process.env.DB_HOST || 'localhost',        // Cloud SQL Public IP (or 'localhost' for dev)
-    user: process.env.DB_USER || ' hospital_app_user',             // Cloud SQL DB User (e.g., hospital_app_user)
+    user: process.env.DB_USER || 'hospital_app_user', // FIX: Removed leading space here
     password: process.env.DB_PASSWORD || 'siaw8985', // Password for the DB User
     database: process.env.DB_NAME || 'hospital_beds_db', // Name of your application database
     waitForConnections: true, // Ensures connection is ready before queries
@@ -40,7 +40,7 @@ app.use(cors()); // Enables Cross-Origin Resource Sharing (allows frontend to ca
 app.use(express.json()); // Parses incoming JSON request bodies
 
 // IMPORTANT: Cloud Run services do NOT serve static files (like HTML/CSS/JS).
-// Your frontend is hosted separately on Google Cloud Storage.
+// Your frontend is hosted separately on Netlify.
 // Therefore, remove the express.static middleware:
 // app.use(express.static(path.join(__dirname, '../frontend')));
 

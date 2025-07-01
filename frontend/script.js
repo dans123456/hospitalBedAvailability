@@ -97,7 +97,7 @@ class HospitalBedSystem {
               type: 'time', // Use time scale for dates
               time: {
                 unit: 'day',
-                tooltipFormat: 'MMM dd, yyyy', // Example: Jul 01, 2025
+                tooltipFormat: 'MMM dd,yyyy', // Example: Jul 01, 2025
                 displayFormats: {
                   day: 'MMM d' // Example: Jul 1
                 }
