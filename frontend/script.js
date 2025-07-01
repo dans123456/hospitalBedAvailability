@@ -97,7 +97,6 @@ class HospitalBedSystem {
               type: 'time', // Use time scale for dates
               time: {
                 unit: 'day',
-                // FIX: Changed 'DD' to 'dd' or 'd' for date-fns compatibility
                 tooltipFormat: 'MMM dd, yyyy', // Example: Jul 01, 2025
                 displayFormats: {
                   day: 'MMM d' // Example: Jul 1
@@ -127,7 +126,8 @@ class HospitalBedSystem {
    */
   async updateCharts() {
     try {
-        const response = await fetch('http://localhost:3000/api/hospitals'); // Fetch all hospitals
+        // Use the deployed backend URL for fetching hospital data
+        const response = await fetch('https://hospital-bed-backend-154014254128.us-central1.run.app/api/hospitals');
         if (!response.ok) throw new Error('Failed to fetch hospital data for charts');
         const hospitals = await response.json();
 
@@ -480,9 +480,8 @@ class HospitalBedSystem {
 
 
     try {
-      // Determine if it's an update or new submission based on this.editingHospitalId
-      // Backend uses POST for upsert, so we always use POST
-      const url = `http://localhost:3000/api/hospitals`; // ID is handled by backend based on name
+      // Use the deployed backend URL for form submissions
+      const url = `https://hospital-bed-backend-154014254128.us-central1.run.app/api/hospitals`;
 
       const response = await fetch(url, {
         method: "POST", // Backend uses POST for both insert/update based on name
@@ -559,7 +558,8 @@ class HospitalBedSystem {
     if (this.searchTerm) params.append('search', this.searchTerm);
     if (this.regionFilter) params.append('region', this.regionFilter);
 
-    const url = `http://localhost:3000/api/hospitals?${params.toString()}`;
+    // Use the deployed backend URL for fetching hospital data
+    const url = `https://hospital-bed-backend-154014254128.us-central1.run.app/api/hospitals?${params.toString()}`;
     try {
       const response = await fetch(url);
       if (!response.ok) {
@@ -671,7 +671,8 @@ class HospitalBedSystem {
     this.closeModal('deleteConfirmationModal'); // Close confirmation modal
 
     try {
-      const response = await fetch(`http://localhost:3000/api/hospitals/${hospitalId}`, {
+      // Use the deployed backend URL for delete operations
+      const response = await fetch(`https://hospital-bed-backend-154014254128.us-central1.run.app/api/hospitals/${hospitalId}`, {
         method: 'DELETE',
       });
 
@@ -1052,7 +1053,7 @@ class HospitalBedSystem {
 
     try {
         // --- REAL API CALL WOULD GO HERE ---
-        // const response = await fetch('http://localhost:3000/api/admin/login', {
+        // const response = await fetch('https://hospital-bed-backend-154014254128.us-central1.run.app/api/admin/login', {
         //     method: 'POST',
         //     headers: { 'Content-Type': 'application/json' },
         //     body: JSON.stringify({ username: 'admin', password: password })
@@ -1140,7 +1141,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     publicHospitalsList.innerHTML = `<div class="empty-state"><i class="fas fa-spinner fa-spin"></i><h3>Loading...</h3></div>`;
     try {
-      const response = await fetch('http://localhost:3000/api/hospitals');
+      // Use the deployed backend URL for fetching public hospital data
+      const response = await fetch('https://hospital-bed-backend-154014254128.us-central1.run.app/api/hospitals');
       if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
       const hospitals = await response.json();
 
